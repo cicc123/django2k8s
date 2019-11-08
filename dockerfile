@@ -9,6 +9,6 @@ pip3 install --no-cache-dir -i http://mirrors.aliyun.com/pypi/simple/ --trusted-
 rm -rf \
 /root/.cache \
 /tmp/* 
-copy django2k8s /django2k8s
+copy ../django2k8s /django2k8s
 WORKDIR /django2k8s
 CMD ["python manage.py runserver 0:8080"]
