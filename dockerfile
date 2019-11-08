@@ -10,5 +10,6 @@ rm -rf \
 /root/.cache \
 /tmp/* 
 copy django2k8s /django2k8s
+COPY gorun.sh /bin
 WORKDIR /django2k8s
-CMD ["/django2k8s/gorun.sh"]
+CMD ["/bin/gorun.sh"]
