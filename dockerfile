@@ -11,4 +11,4 @@ rm -rf \
 /tmp/* 
 copy django2k8s /django2k8s
 WORKDIR /django2k8s
-CMD ["python manage.py runserver 0:8080"]
+CMD ["/django2k8s/gorun.sh"]
