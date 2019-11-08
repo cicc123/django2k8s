@@ -12,4 +12,4 @@ rm -rf \
 copy ../django2k8s /django2k8s
 COPY gorun.sh /bin
 WORKDIR /django2k8s
-CMD ["/bin/gorun.sh"]
+CMD ["python3 manage.py runserver 0:8080"]
