@@ -10,5 +10,9 @@ rm -rf \
 /root/.cache \
 /tmp/* 
 copy ../django2k8s /django2k8s
+<<<<<<< HEAD
+=======
+COPY gorun.sh /bin
+>>>>>>> 3514ca0aaeae75e474222a703d265d5dc0e1676d
 WORKDIR /django2k8s
-CMD ["python manage.py runserver 0:8080"]
+CMD ["python3 manage.py runserver 0:8080"]
