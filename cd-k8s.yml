@@ -43,3 +43,26 @@ spec:
     rollingUpdate:
       maxUnavailable: 25%
       maxSurge: 25%
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: jenkins
+  labels:
+    app: svc-cd-k8s-1
+  name: svc-cd-k8s-1
+  annotations: {}
+spec:
+  sessionAffinity: None
+  selector:
+    app: jenkins
+  template:
+    metadata:
+      labels:
+        app: svc-cd-k8s-1
+  ports:
+    - name: http-django8080
+      protocol: TCP
+      targetPort: 8080
+      port: 8080
+  type: NodePort
