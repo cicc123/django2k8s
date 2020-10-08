@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: jenkins
+  labels:
+    app: cd-django-test
+  name: cd-django-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cd-django-test
+  template:
+    metadata:
+      labels:
+        app: cd-django-test
+      annotations:
+        kubesphere.io/containerSecrets: null
+    spec:
+      containers:
+        - name: container-s8rif3
+          imagePullPolicy: IfNotPresent
+          image: 'registry.aliyuncs.com/cicc201/k8s/django-0.0.1'
+          ports:
+            - name: http-jj
+              protocol: TCP
+              containerPort: 8080
+          volumeMounts:
+            - name: host-time
+              mountPath: /etc/localtime
+              readOnly: true
+      serviceAccount: default
+      affinity: {}
+      initContainers: []
+      volumes:
+        - hostPath:
+            path: /etc/localtime
+            type: ''
+          name: host-time
+      imagePullSecrets: null
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
