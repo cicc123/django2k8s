@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -51,17 +52,16 @@ metadata:
   labels:
     app: svc-cd-k8s-1
   name: svc-cd-k8s-1
-  annotations: {}
 spec:
   sessionAffinity: None
   selector:
-    app: jenkins
+    app: cd-django-test
   template:
     metadata:
       labels:
         app: svc-cd-k8s-1
   ports:
-    - name: http-django8080
+    - name: http-cd-k8s-django
       protocol: TCP
       targetPort: 8080
       port: 8080
